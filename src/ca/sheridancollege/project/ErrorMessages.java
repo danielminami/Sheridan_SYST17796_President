@@ -9,9 +9,6 @@ package ca.sheridancollege.project;
  *
  * @author Daniel Minami
  */
-public class Player {
-    
-    private String name;
-    private Hand hand;
+public class ErrorMessages {
     
 }

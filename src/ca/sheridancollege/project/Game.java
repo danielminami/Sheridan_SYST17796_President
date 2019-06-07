@@ -12,10 +12,10 @@ import java.util.ArrayList;
  * child of this class and instantiate the methods given.
  * @author dancye, 2018
  */
-public abstract class Game 
+public abstract class Game extends ErrorMessages
 {
     private final String gameName;//the title of the game
-    private ArrayList <Player> players;// the players of the game
+    private ArrayList<Player> players;// the players of the game
     
     public Game(String givenName)
     {
@@ -47,6 +47,8 @@ public abstract class Game
         this.players = players;
     }
     
+    public abstract void endOfThis();
+    
     /**
      * Play the game. This might be one method or many method calls depending
      * on your game.
@@ -59,6 +61,10 @@ public abstract class Game
      */
     public abstract void declareWinner();
 
-   
+       
+    public void fillPlayerHand(Deck deckOfCards) {
+        //stub
+        //Split the array into 4 and create the 4 Players Hands
+    }
     
 }//end class

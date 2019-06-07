@@ -9,9 +9,13 @@ package ca.sheridancollege.project;
  *
  * @author Daniel Minami
  */
-public class Player {
+public class Board extends GroupOfCards {
+
+    private Card lastPlayed;
+    public static final int DECK_SIZE_PRESIDENT = 52;
     
-    private String name;
-    private Hand hand;
+    public Board () {
+        super(DECK_SIZE_PRESIDENT);
+    }
     
 }
