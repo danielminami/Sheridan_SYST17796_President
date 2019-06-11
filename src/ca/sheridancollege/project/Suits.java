@@ -14,10 +14,10 @@ import java.util.HashMap;
  */
 public enum Suits {
     
-    CLUBS (1, '\u2663', "Clubs"), 
-    DIAMOND (2, '\u2666', "Diamond"), 
-    HEARTS (3, '\u2665', "Hearts"), 
-    SPADES (4, '\u2660', "Spades");
+    CLUBS (1, '?', "Clubs"), 
+    DIAMOND (2, '?', "Diamond"), 
+    HEARTS (3, '?', "Hearts"), 
+    SPADES (4, '?', "Spades");
 
     private int suitNumber;
     private char suitSymbol;
