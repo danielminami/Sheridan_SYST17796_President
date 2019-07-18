@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ca.sheridancollege.project;
+package ca.sheridancollege.project.model;
 
 import java.util.ArrayList;
 
@@ -15,9 +15,9 @@ public class Round {
     
     private boolean isActive = true;
     private Trick[] trick;
-    private ArrayList<Player> activePlayers;
-    private ArrayList<Player> winningOrder;
 
+    public Round () {}
+    
     /**
      * @return the isActive
      */
@@ -46,32 +46,7 @@ public class Round {
         this.trick = trick;
     }
 
-    /**
-     * @return the activePlayers
-     */
-    public ArrayList<Player> getActivePlayers() {
-        return activePlayers;
+    public void declareWinner(Player player) {
+        
     }
-
-    /**
-     * @param activePlayers the activePlayers to set
-     */
-    public void setActivePlayers(ArrayList<Player> activePlayers) {
-        this.activePlayers = activePlayers;
-    }
-
-    /**
-     * @return the winningOrder
-     */
-    public ArrayList<Player> getWinningOrder() {
-        return winningOrder;
-    }
-
-    /**
-     * @param winningOrder the winningOrder to set
-     */
-    public void setWinningOrder(ArrayList<Player> winningOrder) {
-        this.winningOrder = winningOrder;
-    }
-     
 }

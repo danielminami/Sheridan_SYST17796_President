@@ -1,17 +1,19 @@
-package ca.sheridancollege.project;
+package ca.sheridancollege.project.model;
+
+import ca.sheridancollege.project.model.Card;
 
 /**
  *
  * @author Daniel Minami
  */
-public class Card {
-
+public class StandardCard extends Card {
+    
     private Rank rank;
-    private Suits suit;
+    private Suit suit;
 
-    public Card() {}
+    public StandardCard() {}
 
-    public Card(Rank rank, Suits suit) {
+    public StandardCard(Rank rank, Suit suit) {
         this.rank = rank;
         this.suit = suit;
     }
@@ -33,20 +35,21 @@ public class Card {
     /**
      * @return the suit
      */
-    public Suits getSuit() {
+    public Suit getSuit() {
         return suit;
     }
 
     /**
      * @param suit the suit to set
      */
-    public void setSuit(Suits suit) {
+    public void setSuit(Suit suit) {
         this.suit = suit;
     }
 
     @Override
     public String toString() {
-        return String.format("%s of %s", this.rank.getRankLongName(), this.suit.getSuitName());
+        return String.format("%s of %s", this.rank.getRankLongName(), 
+                this.suit.getSuitName());
     }
     
     /**
@@ -54,9 +57,11 @@ public class Card {
      * 
      * @return short String of the card
      */
+    @Override
     public String shortString() {
     
-        return String.format("%s%c", this.rank.getRankShortName(), this.suit.getSuitSymbol());
+        return String.format("%s%c", this.rank.getRankShortName(), 
+                this.suit.getSuitSymbol());
     }
     
     @Override
@@ -71,7 +76,7 @@ public class Card {
         }
 
         if (obj instanceof Card) {
-            Card card = (Card) obj;
+            StandardCard card = (StandardCard) obj;
             if (this.getRank() == card.getRank()
                     && this.getSuit() == card.getSuit()) {
                 return true;
@@ -83,4 +88,8 @@ public class Card {
         }
     }
 
+    public int compareTo(Card o) {
+        //stub
+        return 0;
+    }
 }

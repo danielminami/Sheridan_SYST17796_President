@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ca.sheridancollege.project;
+package ca.sheridancollege.project.model;
 
 /**
  *
  * @author Daniel Minami
  */
-public class Board extends GroupOfCards {
-
-    private Card lastPlayed;
-    public static final int DECK_SIZE_PRESIDENT = 52;
-    
-    public Board () {
-        super(DECK_SIZE_PRESIDENT);
-    }
+public class ErrorMessages {
     
 }

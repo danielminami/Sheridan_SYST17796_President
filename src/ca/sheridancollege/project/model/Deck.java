@@ -1,5 +1,6 @@
-package ca.sheridancollege.project;
+package ca.sheridancollege.project.model;
 
+//import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -15,14 +16,29 @@ public class Deck extends GroupOfCards {
         init();
     }
     
+    /*Composition Version
+    
     private void init() {
 
         int i = 0;
         
-        for (Suits s : Suits.values()) {
+        for (Suit s : Suit.values()) {
             for (Rank r : Rank.values()){
                 Card c = new Card(r, s);
                 cards[i++] = c;
+            }
+        }
+    }
+    */
+
+    private void init() {
+
+        int i = 0;
+        
+        for (Suit s : Suit.values()) {
+            for (Rank r : Rank.values()){
+                PresidentCard c = new PresidentCard(r, s);
+                this.add(c);
             }
         }
     }
@@ -33,6 +49,8 @@ public class Deck extends GroupOfCards {
     
     }
     
+    
+    /*Composition Version
     public Deck shuffleDeck(Deck deckOfCards) {
  
         Random rgen = new Random();
@@ -46,11 +64,32 @@ public class Deck extends GroupOfCards {
 
         return deckOfCards;
     }
+    */
+    
+    public void shuffleDeck(Deck deckOfCards) {
+ 
+        Random rgen = new Random();
+        Deck tempArrayL = new Deck();
+        
+	for (int i=0; i < this.size(); i++) {    
+            int randomPosition = rgen.nextInt(this.size());
+	    tempArrayL.add(this.get(randomPosition));
+	}
+        
+        this.clear();
+        this.addAll(tempArrayL);
+    }
     
     @Override
     public String toString() {
         //stub
         return "stub";
+    }
+
+    @Override
+    public int compareTo(GroupOfCards o) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+        //To change body of generated methods, choose Tools | Templates.
     }
     
 }

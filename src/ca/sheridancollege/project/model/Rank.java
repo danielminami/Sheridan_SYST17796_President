@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ca.sheridancollege.project;
+package ca.sheridancollege.project.model;
 
 import java.util.HashMap;
 
@@ -13,8 +13,8 @@ import java.util.HashMap;
  */
 public enum Rank {
     
-    ACE (1, "1", "Ace"),
-    TWO (2, "2", "Two"),
+    ACE (1, "A", "Ace"),
+    TWO (99, "2", "Two"),
     THREE (3, "3", "Three"),
     FOUR (4, "4", "Four"),
     FIVE (5, "5", "Five"),
@@ -100,9 +100,9 @@ public enum Rank {
     }
     
     public static Rank getRank(String name) {
-        if (lookupByName == null) {
+        if (lookupByName == null) 
             initIdLookup();
-        }
+    
         Rank rank = lookupByName.get(name);
         if (rank == null) {
             throw new IllegalArgumentException("Invalid rank ID number.");
