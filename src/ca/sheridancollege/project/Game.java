@@ -87,6 +87,14 @@ public class Game {
        
         do {
             Trick trick = new Trick();
+            GamePlayers trickPlayers = new GamePlayers();
+            
+            // DeepCopy of the array gamePlayers
+            
+            /*Stu, I had to implement that for Turn*/
+            for (Player p: gamePlayers)
+                trickPlayers.add(p);
+            
             if (playerTurn == 99)
                 playerTurn = 0;
             
@@ -132,6 +140,10 @@ public class Game {
                             
                             AssignedTo: Daniel (not initiated)
                             */
+                            
+                            turn.setIsActive(false);
+                            
+                            
                         } else {
                             /*
                             TODO:   Test the user Entry function for bad,
@@ -171,7 +183,7 @@ public class Game {
                     } catch (Exception e) {
                         System.out.println("Invalid Movement.");
                     }
-                } while (playerNumber <= 4);
+                } while (turn.isIsActive());
                 /* TODO:    check whether the Trick is over, otherwise, update 
                             the Trick for next Turn;
                 

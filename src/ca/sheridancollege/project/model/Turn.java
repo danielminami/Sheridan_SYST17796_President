@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class Turn {
     private Player player;
+    private boolean isActive = true;
     
     public Turn (Player player) {
         setPlayer(player);
@@ -21,7 +22,7 @@ public class Turn {
     public void playTurn(ArrayList<Integer> playerMoves, Board board) {
         Hand tempHand = new Hand();
         for (Integer i: playerMoves){       
-            tempHand.add(player.getHand().get(i));
+            tempHand.add(getPlayer().getHand().get(i));
         }
         
         //Conditions for 1 Card Movement
@@ -85,5 +86,19 @@ public class Turn {
      */
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    /**
+     * @return the isActive
+     */
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    /**
+     * @param isActive the isActive to set
+     */
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
 }
