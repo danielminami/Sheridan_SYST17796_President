@@ -22,57 +22,46 @@ public class Turn {
     public void playTurn(ArrayList<Integer> playerMoves, Board board) {
         Hand tempHand = new Hand();
         for (Integer i: playerMoves){       
-            tempHand.add(getPlayer().getHand().get(i));
+            tempHand.add(player.getHand().get(i));
         }
         
-        //Conditions for 1 Card Movement
-        if (tempHand.size() == 1) {
-            
-            //In case board is Empty, temp Hand is played
-            if (board.size() == 0){
+        //valid hand selection
+        if (tempHand.compareTo(tempHand) == 0) {
+            //case board is empty
+            if ((board == null) || board.isEmpty()) {
+                //fill the board with the Hand's content
                 for(PresidentCard c: tempHand)
                     board.add(c);
-                
-            //In case board already has a card on top    
-            } else if (board.size() == 1) {
-                if (board.moveAllowed(tempHand.get(0))){
-                    board.remove(0);
-                    board.add(tempHand.get(0));  
+                //remove the cards from the players hand
+                player.getHand().removeFromHand(tempHand);
+            } else if (board.size() == tempHand.size()) {
+                if (board.moveAllowed(tempHand)) {
+                    board.clear();
+                    for (PresidentCard c: tempHand)
+                        board.add(c);
+                    player.getHand().removeFromHand(tempHand);
                 } else {
-                    throw new IllegalArgumentException("Error: Movement not "
-                            + "allowed. This Card cannot be played after " + 
-                            board.toString());
+                    throw new IllegalArgumentException("Error: You have to play"
+                            + " cards within the same length as the board and"
+                            + " greater Rank.");
                 }
-
-            }
-            
-            //In case board has more than one card on top, we will probably need 1 if for each condition.
-            
-            
-        } else if (tempHand.size() == 2) {
-            //first test if the cards have the same rank and can be played together
-            if (tempHand.get(0).compareTo(tempHand.get(1)) == 0) {
-                //Ok, cards are the same
             } else {
-                throw new IllegalArgumentException("Error: Movement not "
-                        + "allowed. Only Cards within the same ranking "
-                        + "can be played together.");
+                throw new IllegalArgumentException("Error: Invalid number "
+                        + "of cards selected");
             }
-                
             
-            
-        } else if (tempHand.size() == 3) {
-            
-        } else if (tempHand.size() == 4) {
-
-        } else if (tempHand.size() > 4) {
-            throw new IllegalArgumentException("Error: Movement not allowed,"
-                    + " you can play 4 card at maximum.");
+        } else {
+            throw new IllegalArgumentException("Error: to play more than "
+                    + "one card, they must be equals and match the current "
+                    + "board length.");
         }
         
+       
     }
     
-    public void passTurn() {}
+    public void passTurn() {
+        setIsActive(false);
+    }
 
     /**
      * @return the player

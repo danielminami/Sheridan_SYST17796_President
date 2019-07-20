@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Round {
     
     private boolean isActive = true;
+    private Player winner;
     private Trick[] trick;
 
     public Round () {}
@@ -46,7 +47,23 @@ public class Round {
         this.trick = trick;
     }
 
-    public void declareWinner(Player player) {
+    public String declareWinner() {
         
+        return winner.toString();
+        
+    }
+
+    /**
+     * @return the winner
+     */
+    public Player getWinner() {
+        return winner;
+    }
+
+    /**
+     * @param winner the winner to set
+     */
+    public void setWinner(Player winner) {
+        this.winner = winner;
     }
 }

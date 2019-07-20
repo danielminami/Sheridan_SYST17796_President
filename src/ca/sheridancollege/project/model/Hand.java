@@ -35,20 +35,24 @@ public class Hand extends GroupOfCards {
         }
     }
     
-    public void removeFromHand(ArrayList<PresidentCard> cardsToRemove) {}
+    public void removeFromHand(ArrayList<PresidentCard> cardsToRemove) {
+        for (PresidentCard c: cardsToRemove)
+            this.remove(c);
+    }
 
     @Override
     public int compareTo(GroupOfCards g) {
 
         Hand c = (Hand)g;
-        int result = 99;
+        int result = 0;
         
-        if ((g == null) && g.isEmpty()) {
-            return result;
+        if ((g == null) || g.isEmpty()) {
+            throw new IllegalArgumentException("Error: Empty Hand");
         }
         
         if (c.size() == 1)
-            return 1;
+            return result;
+        
 
         if (c.size() == 2){
             return result = c.get(0).compareTo(c.get(1));
@@ -70,7 +74,9 @@ public class Hand extends GroupOfCards {
             result += c.get(2).compareTo(c.get(3));
             return result;
         } else {
-            return result;
+            throw new IllegalArgumentException("Error: Maximum allowed cards "
+                    + "are 4 for each turn");
+            
         }    
     }
     

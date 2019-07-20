@@ -20,8 +20,9 @@ public class Board extends GroupOfCards {
         super(DECK_SIZE_PRESIDENT);
     }
     
-    public boolean moveAllowed(PresidentCard card){
-        if (this.get(0).compareTo(card) >= 0)
+    public boolean moveAllowed(GroupOfCards g){
+        Hand c = (Hand)g;
+        if (this.get(0).compareTo(c.get(0)) <= 0)
             return true;
         return false;
     }
@@ -31,8 +32,17 @@ public class Board extends GroupOfCards {
     }
 
     @Override
-    public int compareTo(GroupOfCards o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int compareTo(GroupOfCards g) {
+                
+        Hand c = (Hand)g;
+        int result = 0;
+        
+        if ((c == null) || c.isEmpty()) {
+            throw new IllegalArgumentException("Error: Empty Hand");
+        }
+        
+        return result = this.get(0).compareTo(c.get(0));
+
     }
     
     @Override

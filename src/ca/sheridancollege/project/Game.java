@@ -107,7 +107,7 @@ public class Game {
             */
             
             do {
-                Turn turn = new Turn(gamePlayers.get(playerTurn));
+                Turn turn = new Turn(trickPlayers.get(playerTurn));
                 String playerEntry = "";
                 ArrayList<Integer> playerMove = new ArrayList();
                 /*Getting the Player movement*/
@@ -141,8 +141,12 @@ public class Game {
                             AssignedTo: Daniel (not initiated)
                             */
                             
-                            turn.setIsActive(false);
-                            
+                            turn.passTurn();
+                            trickPlayers.remove(playerTurn);
+                            //for debugging
+                            for (Player p: gamePlayers)
+                                System.out.println(p);
+                                    
                             
                         } else {
                             /*
@@ -153,15 +157,8 @@ public class Game {
                             */
                             
                             //placing the users entry in a int Array
-                            int nextIndex = 0;
-                            for (int i = 0; i < playerEntry.length(); i++) {
-                                if (playerEntry.charAt(i) == ',') {
-                                    playerMove.add(Integer.parseInt(playerEntry.
-                                            subSequence(nextIndex, i-1).
-                                            toString()));
-                                    nextIndex = i+1;
-                                }
-                            }
+
+                            playerMove = userEntryToArray(playerEntry);
                             
                             /*
                             TODO:   Implement the playTurn method in the Turn
@@ -174,14 +171,32 @@ public class Game {
                             AssignedTo: Daniel (doing)
                             */                            
                             turn.playTurn(playerMove, board);
+                            /*
+                            TODO:   Check winning condition and update the
+                                    parent objects to declare the winner.
+                                    
+                            AssignedTo: Daniel
+                            */
+                            if (turn.getPlayer().getHand().size() == 0) {
+                                trick.setIsActive(false);
+                                round.setIsActive(false);
+                                round.setWinner(turn.getPlayer());
+                            }
+                           
+                            turn.setIsActive(false);
+                            //for debugging
+                            for (Player p: gamePlayers)
+                                System.out.println("PlayerHands After Play() " +p);
+
+                            //for debugging
+                            for (PresidentCard c: board)
+                                System.out.println("Board status: " + c);                            
                             
                             
                         }
-                        Player p = new Player (playerName);
-                        gamePlayers.add(p);
-                        playerNumber++;
                     } catch (Exception e) {
-                        System.out.println("Invalid Movement.");
+                        //System.out.println("Invalid Movement.");
+                        System.out.println(e.getMessage());
                     }
                 } while (turn.isIsActive());
                 /* TODO:    check whether the Trick is over, otherwise, update 
@@ -208,6 +223,33 @@ public class Game {
         
         AssignedTo: Muaz (not initiated)
         */
+    }
+    
+    public static ArrayList<Integer> userEntryToArray(String playerEntry) {
+        ArrayList<Integer> tempArray = new ArrayList();
+        String[] playerEntryArray = playerEntry.split(",");
+        
+        for (String s: playerEntryArray)
+            tempArray.add(Integer.parseInt(s));
+        
+        for (Integer i: tempArray)
+            System.out.println("tempArray: " + i);
+/*        
+        for (int i = 0; i < playerEntry.length(); i++) {
+            if (playerEntry.charAt(i) == ',') {
+                //tempArray.add(Integer.parseInt(playerEntry.
+                //        subSequence(nextIndex, i-1).toString()));
+                System.out.println("User entry: " + Integer.parseInt(playerEntry.substring(nextIndex, i-1)));
+                nextIndex = i+1;
+            }
+            if (i == playerEntry.length() -1) {
+                System.out.println("User entry: " + Integer.parseInt(playerEntry.substring(nextIndex, i)));
+                //tempArray.add(Integer.parseInt(playerEntry.
+                  //      subSequence(nextIndex, i).toString()));
+            }
+        }
+*/
+        return tempArray;
     }
     
 }
