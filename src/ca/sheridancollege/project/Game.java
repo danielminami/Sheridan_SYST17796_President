@@ -67,7 +67,7 @@ public class Game {
             }
         } while (playerNumber <= 4);
         
-        deck.shuffleDeck(deck);
+        //deck.shuffleDeck(deck);
         
         for (Player p: gamePlayers) {
             Hand hand = new Hand(deck);
@@ -107,104 +107,134 @@ public class Game {
             */
             
             do {
-                Turn turn = new Turn(trickPlayers.get(playerTurn));
-                String playerEntry = "";
-                ArrayList<Integer> playerMove = new ArrayList();
-                /*Getting the Player movement*/
-                do {
-                    try {
-                        /*
-                        TODO:   Improve the user message explaining how to play
-                                correctly.
-                        
-                        AssignedTo: Muaz (not initiated)
-                        */
-                        
-                        System.out.println("Enter 'p' to pass or type the "
-                                + "card(s) index(es), separating by comma: ");
-                        
-                        /*
-                        TODO:   Implement the toString method in hand that
-                                displays the current player hand
-                        
-                        AssignedTo: Muaz (not initiated)
-                        */        
-                        
-                        in = new Scanner(System.in);
-                        playerEntry = in.nextLine();
-                        if (playerEntry.equals("p")){
+                if (trickPlayers.size() != 1) {
+                    Turn turn = new Turn(trickPlayers.get(playerTurn));
+                    String playerEntry = "";
+                    ArrayList<Integer> playerMove = new ArrayList();
+                    /*Getting the Player movement*/
+                    do {
+                        try {
                             /*
-                            TODO:   Implement the method pass() in the Turn 
-                                    Class. It should also update the Turn object
-                                    and check for the whether the Turn isOver.
-                            
-                            AssignedTo: Daniel (not initiated)
-                            */
-                            
-                            turn.passTurn();
-                            trickPlayers.remove(playerTurn);
-                            //for debugging
-                            for (Player p: gamePlayers)
-                                System.out.println(p);
-                                    
-                            
-                        } else {
-                            /*
-                            TODO:   Test the user Entry function for bad,
-                                    good and boundary tests
-                            
+                            TODO:   Improve the user message explaining how to play
+                                    correctly.
+
                             AssignedTo: Muaz (not initiated)
                             */
-                            
-                            //placing the users entry in a int Array
-
-                            playerMove = userEntryToArray(playerEntry);
-                            
-                            /*
-                            TODO:   Implement the playTurn method in the Turn
-                                    Class. It users the Hand Class and Board
-                                    Class to make sure the movement is valid.
-                                    By the end of the execution, updates the
-                                    objects hand and board.
-                                    It should also update the Turn object
-                            
-                            AssignedTo: Daniel (doing)
-                            */                            
-                            turn.playTurn(playerMove, board);
-                            /*
-                            TODO:   Check winning condition and update the
-                                    parent objects to declare the winner.
-                                    
-                            AssignedTo: Daniel
-                            */
-                            if (turn.getPlayer().getHand().size() == 0) {
-                                trick.setIsActive(false);
-                                round.setIsActive(false);
-                                round.setWinner(turn.getPlayer());
-                            }
-                           
-                            turn.setIsActive(false);
                             //for debugging
-                            for (Player p: gamePlayers)
-                                System.out.println("PlayerHands After Play() " +p);
+                            for (Player p: trickPlayers)
+                                System.out.println(p);
 
                             //for debugging
                             for (PresidentCard c: board)
-                                System.out.println("Board status: " + c);                            
-                            
-                            
+                                System.out.println("Board status: " + c); 
+                                
+                            System.out.println("Enter 'p' to pass or type the "
+                                    + "card(s) index(es), separating by comma: ");
+
+                            /*
+                            TODO:   Implement the toString method in hand that
+                                    displays the current player hand
+
+                            AssignedTo: Muaz (not initiated)
+                            */        
+
+                            in = new Scanner(System.in);
+                            playerEntry = in.nextLine();
+                            if (playerEntry.equals("p")){
+                                /*
+                                TODO:   Implement the method pass() in the Turn 
+                                        Class. It should also update the Turn object
+                                        and check for the whether the Turn isOver.
+
+                                AssignedTo: Daniel (not initiated)
+                                */
+                                if (board.isEmpty()) {
+                                    System.out.println("You must play a card in the "
+                                            + "first game turn");
+                                } else {
+                                    turn.setIsActive(false);
+                                    trickPlayers.remove(playerTurn);
+                                    if (playerTurn == trickPlayers.size())
+                                        playerTurn = 0;
+                                }
+                                //for debugging
+                                for (Player p: trickPlayers)
+                                    System.out.println(p);
+
+                                //for debugging
+                                for (PresidentCard c: board)
+                                    System.out.println("Board status: " + c); 
+
+
+                            } else {
+                                /*
+                                TODO:   Test the user Entry function for bad,
+                                        good and boundary tests
+
+                                AssignedTo: Muaz (not initiated)
+                                */
+
+                                //placing the users entry in a int Array
+
+                                playerMove = userEntryToArray(playerEntry);
+
+                                /*
+                                TODO:   Implement the playTurn method in the Turn
+                                        Class. It users the Hand Class and Board
+                                        Class to make sure the movement is valid.
+                                        By the end of the execution, updates the
+                                        objects hand and board.
+                                        It should also update the Turn object
+
+                                AssignedTo: Daniel (doing)
+                                */                            
+                                turn.playTurn(playerMove, board);
+                                /*
+                                TODO:   Check winning condition and update the
+                                        parent objects to declare the winner.
+
+                                AssignedTo: Daniel
+                                */
+                                if (turn.getPlayer().getHand().size() == 0) {
+                                    trick.setIsActive(false);
+                                    round.setIsActive(false);
+                                    round.setWinner(turn.getPlayer());
+                                }
+
+                                playerTurn++;
+
+                                //Resets Players Trick index when 
+                                if (playerTurn == trickPlayers.size()) {
+                                    playerTurn = 0;
+                                } 
+
+                                turn.setIsActive(false);
+                                //for debugging
+                                for (Player p: trickPlayers)
+                                    System.out.println("PlayerHands After Play() " +p);
+
+                                //for debugging
+                                for (PresidentCard c: board)
+                                    System.out.println("Board status: " + c);                            
+
+
+                            }
+                        } catch (Exception e) {
+                            //System.out.println("Invalid Movement.");
+                            System.out.println(e.getMessage());
                         }
-                    } catch (Exception e) {
-                        //System.out.println("Invalid Movement.");
-                        System.out.println(e.getMessage());
-                    }
-                } while (turn.isIsActive());
+                    } while (turn.isIsActive());
                 /* TODO:    check whether the Trick is over, otherwise, update 
                             the Trick for next Turn;
-                
+                   
                 AssignedTo: Stu
                 */
-                
+                } else {
+                    trick.setIsActive(false);
+                    playerTurn = gamePlayers.indexOf(trickPlayers.get(0));
+                    board.clear();
+                    // salve the Trick winner
+                }
             } while (trick.isIsActive());
 
             /* 
@@ -223,32 +253,21 @@ public class Game {
         
         AssignedTo: Muaz (not initiated)
         */
+        
+        System.out.println("Winner: " + round.declareWinner());
+        
     }
     
     public static ArrayList<Integer> userEntryToArray(String playerEntry) {
         ArrayList<Integer> tempArray = new ArrayList();
-        String[] playerEntryArray = playerEntry.split(",");
+        String[] playerEntryArray = playerEntry.split("\\s*,\\s*");
         
         for (String s: playerEntryArray)
             tempArray.add(Integer.parseInt(s));
         
         for (Integer i: tempArray)
             System.out.println("tempArray: " + i);
-/*        
-        for (int i = 0; i < playerEntry.length(); i++) {
-            if (playerEntry.charAt(i) == ',') {
-                //tempArray.add(Integer.parseInt(playerEntry.
-                //        subSequence(nextIndex, i-1).toString()));
-                System.out.println("User entry: " + Integer.parseInt(playerEntry.substring(nextIndex, i-1)));
-                nextIndex = i+1;
-            }
-            if (i == playerEntry.length() -1) {
-                System.out.println("User entry: " + Integer.parseInt(playerEntry.substring(nextIndex, i)));
-                //tempArray.add(Integer.parseInt(playerEntry.
-                  //      subSequence(nextIndex, i).toString()));
-            }
-        }
-*/
+
         return tempArray;
     }
     

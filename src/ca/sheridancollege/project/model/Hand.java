@@ -49,7 +49,7 @@ public class Hand extends GroupOfCards {
         if ((g == null) || g.isEmpty()) {
             throw new IllegalArgumentException("Error: Empty Hand");
         }
-        
+                
         if (c.size() == 1)
             return result;
         

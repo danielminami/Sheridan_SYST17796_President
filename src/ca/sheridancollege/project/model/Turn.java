@@ -59,9 +59,6 @@ public class Turn {
        
     }
     
-    public void passTurn() {
-        setIsActive(false);
-    }
 
     /**
      * @return the player
