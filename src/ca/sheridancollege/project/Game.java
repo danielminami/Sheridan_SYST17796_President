@@ -36,6 +36,7 @@ public class Game {
     public static void main(String[] args){
     
         int playerNumber = 1;
+        boolean validName = true;
         String playerName = "";
         Scanner in;
         GamePlayers gamePlayers = new GamePlayers();
@@ -51,17 +52,40 @@ public class Game {
                 Implement the player comparison in the Player Class equals
                 Method by overring it from parent Object
         
-        AssignedTo: Stu (status: doing)
+        AssignedTo: Stu DONE
         */
         do {
             try {
-                System.out.println("Enter the name of Player " + 
-                        playerNumber + ": ");
+                validName = true;
+                System.out.println("Enter the name of Player "
+                        + playerNumber + ": ");
                 in = new Scanner(System.in);
                 playerName = in.nextLine();
-                Player p = new Player (playerName);
-                gamePlayers.add(p);
-                playerNumber++;
+                Player p = new Player(playerName);
+                if (playerName.trim().equals("")) {               //trim doesnt work...
+                    validName = false;
+                    System.out.println("Error: Cannot have blank" // doesnt work for names that are spaces...
+                            + " player name.");
+                } else {
+                
+                    if (playerNumber == 1) {
+                        gamePlayers.add(p);
+                        playerNumber++;
+                    } else {
+                        for (int i = 0; i < gamePlayers.size(); i++) {
+                            if (playerName.trim().equals(gamePlayers.get(i).getName())) {
+                                validName = false;
+                                System.out.println("Error: Cannot have duplicate"
+                                        + " player name.");
+                            }
+
+                        }
+                        if (validName) {
+                            gamePlayers.add(p);
+                            playerNumber++;
+                        }
+                    }
+                }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
