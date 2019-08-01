@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package ca.sheridancollege.project.model;
-
 import ca.sheridancollege.project.model.Card;
 import java.util.ArrayList;
 
@@ -77,7 +76,8 @@ public class Hand extends GroupOfCards {
             throw new IllegalArgumentException("Error: Maximum allowed cards "
                     + "are 4 for each turn");
             
-        }    
+        }
+        
     }
     
 }

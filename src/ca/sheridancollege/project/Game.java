@@ -9,6 +9,7 @@ import ca.sheridancollege.project.model.PresidentCard;
 import ca.sheridancollege.project.model.Round;
 import ca.sheridancollege.project.model.Trick;
 import ca.sheridancollege.project.model.Turn;
+import ca.sheridancollege.project.view.GameView;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,12 +39,14 @@ public class Game {
         int playerNumber = 1;
         boolean validName = true;
         String playerName = "";
-        Scanner in;
+        Scanner in = new Scanner(System.in);
         GamePlayers gamePlayers = new GamePlayers();
         Deck deck = new Deck();
         Board board = new Board();
         Round round = new Round();
         int playerTurn = 99;
+        
+        GameView.welcomeGame();
         
         /*Getting the Player names and adding to the gamePlayers obj*/
         /* 
@@ -91,8 +94,7 @@ public class Game {
             }
         } while (playerNumber <= 4);
         
-        //deck.shuffleDeck(deck);
-        
+        //This loop creates the Player's Hands
         for (Player p: gamePlayers) {
             Hand hand = new Hand(deck);
             p.setHand(hand);
@@ -102,23 +104,23 @@ public class Game {
         TODO: Implement the Welcome Message when the 4 players are set.
                 It probably should be implemented in the main method
         
-        AssignedTo: Muaz (not initiated)
+        AssignedTo: Muaz (Status: Done)
         */
+        /* print the player's hands, used for DEBUG
         for (Player p: gamePlayers) {
-            System.out.println(p);
+            System.out.println(p + "\n");    
         }
-        
+        */
        
         do {
             Trick trick = new Trick();
             GamePlayers trickPlayers = new GamePlayers();
             
             // DeepCopy of the array gamePlayers
-            
-            /*Stu, I had to implement that for Turn*/
             for (Player p: gamePlayers)
                 trickPlayers.add(p);
             
+            //Tests if it is the first turn
             if (playerTurn == 99)
                 playerTurn = 0;
             
@@ -127,7 +129,7 @@ public class Game {
                     into a new Object every new Trick).
                     The class Trick might have to be addapted.
             
-            AssignedTo: Stu
+            AssignedTo: Stu (DONE)
             */
             
             do {
@@ -142,19 +144,20 @@ public class Game {
                             TODO:   Improve the user message explaining how to play
                                     correctly.
 
-                            AssignedTo: Muaz (not initiated)
+                            AssignedTo: Muaz (Status: Done)
                             */
-                            //for debugging
-                            for (Player p: trickPlayers)
-                                System.out.println(p);
 
                             //for debugging
-                            for (PresidentCard c: board)
-                                System.out.println("Board status: " + c); 
-                                
+                            
+                            /*
+                            TODO:
+                            */
+                            GameView.displayBoard(board);
+                            GameView.displayTurn(turn);
+                              
                             System.out.println("Enter 'p' to pass or type the "
                                     + "card(s) index(es), separating by comma: ");
-
+                            
                             /*
                             TODO:   Implement the toString method in hand that
                                     displays the current player hand
@@ -184,11 +187,6 @@ public class Game {
                                 //for debugging
                                 for (Player p: trickPlayers)
                                     System.out.println(p);
-
-                                //for debugging
-                                for (PresidentCard c: board)
-                                    System.out.println("Board status: " + c); 
-
 
                             } else {
                                 /*
@@ -237,9 +235,7 @@ public class Game {
                                 for (Player p: trickPlayers)
                                     System.out.println("PlayerHands After Play() " +p);
 
-                                //for debugging
-                                for (PresidentCard c: board)
-                                    System.out.println("Board status: " + c);                            
+                         
 
 
                             }
@@ -294,5 +290,6 @@ public class Game {
 
         return tempArray;
     }
+    
     
 }
