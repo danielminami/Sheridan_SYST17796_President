@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.sheridancollege.project.model;
 
+import ca.sheridancollege.project.model.*;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +15,7 @@ public class Turn {
         setPlayer(player);
     }
     
-    public void playTurn(ArrayList<Integer> playerMoves, Board board) {
+    public void playTurn(ArrayList<Integer> playerMoves, Board board)  {
         Hand tempHand = new Hand();
         for (Integer i: playerMoves){       
             tempHand.add(player.getHand().get(i));
@@ -59,6 +55,9 @@ public class Turn {
        
     }
     
+    public boolean passTurn(Board board) {
+        return board.isEmpty();
+    }
 
     /**
      * @return the player

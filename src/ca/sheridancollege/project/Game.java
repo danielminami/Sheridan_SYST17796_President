@@ -65,9 +65,9 @@ public class Game {
                 in = new Scanner(System.in);
                 playerName = in.nextLine();
                 Player p = new Player(playerName);
-                if (playerName.trim().equals("")) {               //trim doesnt work...
+                if (playerName.trim().equals("")) {              
                     validName = false;
-                    System.out.println("Error: Cannot have blank" // doesnt work for names that are spaces...
+                    System.out.println("Error: Cannot have blank" 
                             + " player name.");
                 } else {
                 
@@ -147,22 +147,14 @@ public class Game {
                             AssignedTo: Muaz (Status: Done)
                             */
 
-                            //for debugging
-                            
-                            /*
-                            TODO:
-                            */
                             GameView.displayBoard(board);
                             GameView.displayTurn(turn);
-                              
-                            System.out.println("Enter 'p' to pass or type the "
-                                    + "card(s) index(es), separating by comma: ");
                             
                             /*
                             TODO:   Implement the toString method in hand that
                                     displays the current player hand
 
-                            AssignedTo: Muaz (not initiated)
+                            AssignedTo: Daniel DONE
                             */        
 
                             in = new Scanner(System.in);
@@ -175,9 +167,8 @@ public class Game {
 
                                 AssignedTo: Daniel (not initiated)
                                 */
-                                if (board.isEmpty()) {
-                                    System.out.println("You must play a card in the "
-                                            + "first game turn");
+                                if (turn.passTurn(board)) {
+                                    GameView.displayFirstTurnPass();
                                 } else {
                                     turn.setIsActive(false);
                                     trickPlayers.remove(playerTurn);
@@ -208,7 +199,7 @@ public class Game {
                                         objects hand and board.
                                         It should also update the Turn object
 
-                                AssignedTo: Daniel (doing)
+                                AssignedTo: Daniel - DONE
                                 */                            
                                 turn.playTurn(playerMove, board);
                                 /*
@@ -231,10 +222,10 @@ public class Game {
                                 } 
 
                                 turn.setIsActive(false);
-                                //for debugging
+                                /*for debugging
                                 for (Player p: trickPlayers)
                                     System.out.println("PlayerHands After Play() " +p);
-
+                                */
                          
 
 
@@ -271,10 +262,11 @@ public class Game {
                     Display the winner
                     Close objects
         
-        AssignedTo: Muaz (not initiated)
+        AssignedTo: Daniel - DONE
         */
         
-        System.out.println("Winner: " + round.declareWinner());
+        GameView.displayWinner(round.declareWinner());
+     
         
     }
     
@@ -285,9 +277,10 @@ public class Game {
         for (String s: playerEntryArray)
             tempArray.add(Integer.parseInt(s));
         
+        /*
         for (Integer i: tempArray)
             System.out.println("tempArray: " + i);
-
+        */
         return tempArray;
     }
     
