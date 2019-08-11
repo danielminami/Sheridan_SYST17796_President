@@ -23,7 +23,36 @@ public class GamePlayers extends ArrayList<Player> {
         this.add(p3);
         this.add(p4);
     }
-     public void setGamePlayer (Player p){
+    
+    public static boolean notEmpty(String name){
+        
+        boolean isLegit = false;
+        if (!name.trim().isEmpty())
+            isLegit = true;
+        return isLegit;
+    }
+
+    
+    public boolean isSameName(String name){
+        
+        boolean isSame = false;
+        for (int i = 0; i < this.size(); i++) {
+            if (name.trim().equals(this.get(i).getName())) {
+                isSame = true;
+            }
+        }
+        return isSame;
+    }
+    
+    public void setGamePlayer(Player p){
+        
+        if (notEmpty(p.getName()) && !isSameName(p.getName())){
+            this.add(p);
+        }
+    }
+    
+    /*
+    public void setGamePlayer (Player p){
     
         validName = true;
         playerName = p.getName();           
@@ -49,5 +78,5 @@ public class GamePlayers extends ArrayList<Player> {
                 }
             }
         }
-    }
+    } */
 }

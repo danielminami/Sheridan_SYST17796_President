@@ -45,8 +45,7 @@ public class BoardTest {
         board.add(cBoard);
         hand.add(pMove);
         
-        result = board.moveAllowed(hand);
-      
+        result = board.moveAllowed(hand); 
         assertEquals(expResult, result);
     }
 
