@@ -37,7 +37,6 @@ public class Game {
     public static void main(String[] args){
     
         int playerNumber = 1;
-        boolean validName = true;
         String playerName = "";
         Scanner in = new Scanner(System.in);
         GamePlayers gamePlayers = new GamePlayers();
@@ -57,44 +56,21 @@ public class Game {
         
         AssignedTo: Stu DONE
         */
-        do {
+
+        while (gamePlayers.size() < 4) {
+
             try {
-                validName = true;
-                System.out.println("Enter the name of Player "
-                        + playerNumber + ": ");
+                GameView.displayPromptPlayerName(playerNumber);
                 in = new Scanner(System.in);
                 playerName = in.nextLine();
                 Player p = new Player(playerName);
-                if (playerName.trim().equals("")) {              
-                    validName = false;
-                    System.out.println("Error: Cannot have blank" 
-                            + " player name.");
-                } else {
-                
-                    if (playerNumber == 1) {
-                        gamePlayers.add(p);
-                        playerNumber++;
-                    } else {
-                        for (int i = 0; i < gamePlayers.size(); i++) {
-                            if (playerName.trim().equals(gamePlayers.get(i).getName())) {
-                                validName = false;
-                                System.out.println("Error: Cannot have duplicate"
-                                        + " player name.");
-                            }
-
-                        }
-                        if (validName) {
-                            gamePlayers.add(p);
-                            playerNumber++;
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+                gamePlayers.setGamePlayer(p);
+                playerNumber++;
+            } catch (IllegalArgumentException ex) {
+                GameView.displayCreatePlayerErrorMessage(ex.getMessage());
             }
-        } while (playerNumber <= 4);
+        }
         
-        //This loop creates the Player's Hands
         for (Player p: gamePlayers) {
             Hand hand = new Hand(deck);
             p.setHand(hand);

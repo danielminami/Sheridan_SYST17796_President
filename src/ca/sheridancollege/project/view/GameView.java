@@ -78,4 +78,12 @@ public class GameView {
     public static void displayFirstTurnPass() {
         System.out.println("You must play a card in the first game turn.");
     }
+    
+    public static void displayPromptPlayerName(int pn) {
+        System.out.println("Enter the name of Player " + pn + ": ");
+    }
+    
+    public static void displayCreatePlayerErrorMessage(String s) {
+        System.out.println(s);
+    }    
 }

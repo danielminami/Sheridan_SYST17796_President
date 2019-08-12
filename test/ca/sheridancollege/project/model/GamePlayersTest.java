@@ -5,10 +5,6 @@
  */
 package ca.sheridancollege.project.model;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -52,11 +48,15 @@ public class GamePlayersTest {
    public void testisSameNameBoundary(){
        System.out.println("Alternate Path2 - Checking for duplicate player name - Boundary Test");
        Player p1 = new Player ("one");
-       Player p2 = new Player ("one ");
+       Player p2 = new Player ("two");
+       Player p3 = new Player ("three");
+       Player p4 = new Player ("one");
        GamePlayers sample = new GamePlayers();
        sample.add(p1);
+       sample.add(p2);
+       sample.add(p3);
        boolean expResult = true;
-       boolean result = sample.isSameName(p2.getName());
+       boolean result = sample.isSameName(p4.getName());
        assertEquals(expResult, result);
    }
   
@@ -84,32 +84,4 @@ public class GamePlayersTest {
        assertEquals(expResult, result);
    }
    
-   /*
-   @Test
-   public void testnotSameName(){
-       System.out.println("setGamePlayer Same");
-       String name1 = "same";
-       String name2 = "same";
-       Player p1 = new Player("same");
-       
-       GamePlayers.add(p1);
-       boolean expResult = false;
-       
-   }
-   */
- 
-    /**
-     * Test of setGamePlayer method, of class GamePlayers.
-     */
-   /*
-    @Test
-    public void testSetGamePlayer() {
-        System.out.println("setGamePlayer");
-        Player p = null;
-        GamePlayers instance = new GamePlayers();
-        instance.setGamePlayer(p);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    */
 }
