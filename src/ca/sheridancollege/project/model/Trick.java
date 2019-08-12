@@ -1,15 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.sheridancollege.project.model;
 
 import java.util.ArrayList;
 
 /**
- *
+ * This class models a StandardCard. A StandardCard is a Card
+ * with an specific ranks and suits and can be used in any Standard Game
+ * card game.
+ * 
  * @author Daniel Minami
+ * @author Stuart Bollinger
+ * @author Muaz Ahmed
  */
 public class Trick {
 
@@ -17,16 +17,6 @@ public class Trick {
     private ArrayList<Turn> turn;
     private ArrayList<Player> activePlayers;
     
-    public void resetTrick() {}
-    
-    public void newTrick() {}
-    
-    public boolean checkEndOfTrick() {
-        //stub
-        return false;
-    }
-    
-    public void newTurn() {}
 
     /**
      * @return the isActive

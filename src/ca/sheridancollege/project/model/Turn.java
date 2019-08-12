@@ -1,20 +1,38 @@
 package ca.sheridancollege.project.model;
 
-import ca.sheridancollege.project.model.*;
 import java.util.ArrayList;
 
 /**
- *
+ * This class models a StandardCard. A StandardCard is a Card
+ * with an specific ranks and suits and can be used in any Standard Game
+ * card game.
+ * 
  * @author Daniel Minami
+ * @author Stuart Bollinger
+ * @author Muaz Ahmed
  */
 public class Turn {
     private Player player;
     private boolean isActive = true;
     
+    /**
+     * Constructs an object Turn with a player
+     * 
+     * @param player that will play this Turn
+     */
     public Turn (Player player) {
         setPlayer(player);
     }
     
+    /**
+     * This method plays this turn. The player makes the move and try to place
+     * the Cards in the current board. If the movement is allowed, the turn 
+     * is made inactive and the board is populated with the player's move, 
+     * otherwise, an exception is thrown.
+     * 
+     * @param playerMoves player cards selection
+     * @param board current board game
+     */
     public void playTurn(ArrayList<Integer> playerMoves, Board board)  {
         Hand tempHand = new Hand();
         for (Integer i: playerMoves){       
@@ -55,11 +73,20 @@ public class Turn {
        
     }
     
+    /**
+     * Passed the turn. The player cannot pass if they are the previous Trick
+     * winner.
+     * 
+     * @param board current board
+     * @return true if the player can pass false otherwise
+     */
     public boolean passTurn(Board board) {
         return board.isEmpty();
     }
 
     /**
+     * Accessor to the field player
+     * 
      * @return the player
      */
     public Player getPlayer() {
@@ -67,6 +94,8 @@ public class Turn {
     }
 
     /**
+     * Mutator to the field player
+     * 
      * @param player the player to set
      */
     public void setPlayer(Player player) {
@@ -74,6 +103,8 @@ public class Turn {
     }
 
     /**
+     * Accessor to the field isActive
+     * 
      * @return the isActive
      */
     public boolean isIsActive() {
@@ -81,6 +112,8 @@ public class Turn {
     }
 
     /**
+     * Mutator to the field isActive
+     * 
      * @param isActive the isActive to set
      */
     public void setIsActive(boolean isActive) {

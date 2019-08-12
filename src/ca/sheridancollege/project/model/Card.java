@@ -1,8 +1,12 @@
 package ca.sheridancollege.project.model;
 
 /**
- *
+ *  This class models the abstract Class card. The Card is a parent Class of 
+ * various types of Cards.
+ * 
  * @author Daniel Minami
+ * @author Stuart Bollinger
+ * @author Muaz Ahmed
  */
 public abstract class Card implements Comparable<Card>{
 

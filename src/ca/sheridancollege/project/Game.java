@@ -5,7 +5,6 @@ import ca.sheridancollege.project.model.Deck;
 import ca.sheridancollege.project.model.Player;
 import ca.sheridancollege.project.model.GamePlayers;
 import ca.sheridancollege.project.model.Hand;
-import ca.sheridancollege.project.model.PresidentCard;
 import ca.sheridancollege.project.model.Round;
 import ca.sheridancollege.project.model.Trick;
 import ca.sheridancollege.project.model.Turn;
@@ -82,11 +81,6 @@ public class Game {
         
         AssignedTo: Muaz (Status: Done)
         */
-        /* print the player's hands, used for DEBUG
-        for (Player p: gamePlayers) {
-            System.out.println(p + "\n");    
-        }
-        */
        
         do {
             Trick trick = new Trick();
@@ -151,7 +145,7 @@ public class Game {
                                     if (playerTurn == trickPlayers.size())
                                         playerTurn = 0;
                                 }
-                                //for debugging
+
                                 for (Player p: trickPlayers)
                                     System.out.println(p);
 
@@ -160,10 +154,8 @@ public class Game {
                                 TODO:   Test the user Entry function for bad,
                                         good and boundary tests
 
-                                AssignedTo: Muaz (not initiated)
+                                AssignedTo: Muaz DONE
                                 */
-
-                                //placing the users entry in a int Array
 
                                 playerMove = userEntryToArray(playerEntry);
 
@@ -182,7 +174,7 @@ public class Game {
                                 TODO:   Check winning condition and update the
                                         parent objects to declare the winner.
 
-                                AssignedTo: Daniel
+                                AssignedTo: Daniel DONE
                                 */
                                 if (turn.getPlayer().getHand().size() == 0) {
                                     trick.setIsActive(false);
@@ -192,18 +184,11 @@ public class Game {
 
                                 playerTurn++;
 
-                                //Resets Players Trick index when 
                                 if (playerTurn == trickPlayers.size()) {
                                     playerTurn = 0;
                                 } 
 
                                 turn.setIsActive(false);
-                                /*for debugging
-                                for (Player p: trickPlayers)
-                                    System.out.println("PlayerHands After Play() " +p);
-                                */
-                         
-
 
                             }
                         } catch (Exception e) {
@@ -253,10 +238,6 @@ public class Game {
         for (String s: playerEntryArray)
             tempArray.add(Integer.parseInt(s));
         
-        /*
-        for (Integer i: tempArray)
-            System.out.println("tempArray: " + i);
-        */
         return tempArray;
     }
     
