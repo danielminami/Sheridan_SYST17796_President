@@ -22,7 +22,7 @@ public class Game {
     TODO:   Create all the Java Docs for all classes and Enums of the project
     Comments: the assigned person can list all the tasks and subdivide
     
-    AssignedTo: Muaz (Status: hold, wait until project ends)
+    AssignedTo: Muaz DONE
     */
     
     /*
@@ -30,7 +30,7 @@ public class Game {
             with boundary, good and bad tests.
     Comments: the assigned person can list all the tasks and subdivide
     
-    AssignedTo: Muaz (Status: hold, wait until project ends)
+    AssignedTo: Muaz DONE
     */
     
     public static void main(String[] args){
@@ -66,7 +66,7 @@ public class Game {
                 gamePlayers.setGamePlayer(p);
                 playerNumber++;
             } catch (IllegalArgumentException ex) {
-                GameView.displayCreatePlayerErrorMessage(ex.getMessage());
+                GameView.displayErrorMessage(ex.getMessage());
             }
         }
         
@@ -135,7 +135,7 @@ public class Game {
                                         Class. It should also update the Turn object
                                         and check for the whether the Turn isOver.
 
-                                AssignedTo: Daniel (not initiated)
+                                AssignedTo: Daniel DONE
                                 */
                                 if (turn.passTurn(board)) {
                                     GameView.displayFirstTurnPass();
@@ -192,8 +192,8 @@ public class Game {
 
                             }
                         } catch (Exception e) {
-                            //System.out.println("Invalid Movement.");
-                            System.out.println(e.getMessage());
+                            GameView.displayErrorMessage(
+                                    e.getMessage());
                         }
                     } while (turn.isIsActive());
                 /* TODO:    check whether the Trick is over, otherwise, update 
