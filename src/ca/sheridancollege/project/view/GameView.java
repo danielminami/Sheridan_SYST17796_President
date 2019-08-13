@@ -83,7 +83,7 @@ public class GameView {
         System.out.println("Enter the name of Player " + pn + ": ");
     }
     
-    public static void displayCreatePlayerErrorMessage(String s) {
+    public static void displayErrorMessage(String s) {
         System.out.println(s);
     }    
 }

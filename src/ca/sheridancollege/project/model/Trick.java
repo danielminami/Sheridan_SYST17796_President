@@ -3,9 +3,9 @@ package ca.sheridancollege.project.model;
 import java.util.ArrayList;
 
 /**
- * This class models a StandardCard. A StandardCard is a Card
- * with an specific ranks and suits and can be used in any Standard Game
- * card game.
+ * This class models a Trick. A Round may have many Tricks. A trick holds an
+ * Array of active players. Once the player passes, the they are removed from 
+ * the Trick.
  * 
  * @author Daniel Minami
  * @author Stuart Bollinger
@@ -19,6 +19,8 @@ public class Trick {
     
 
     /**
+     * Accessor for the isActive field.
+     * 
      * @return the isActive
      */
     public boolean isIsActive() {
@@ -26,6 +28,8 @@ public class Trick {
     }
 
     /**
+     * Mutator for the isActive field.
+     * 
      * @param isActive the isActive to set
      */
     public void setIsActive(boolean isActive) {
@@ -33,6 +37,8 @@ public class Trick {
     }
 
     /**
+     * Accessor for the Turn field.
+     * 
      * @return the turn
      */
     public ArrayList<Turn> getTurn() {
@@ -40,6 +46,8 @@ public class Trick {
     }
 
     /**
+     * Mutator for the isActive field.
+     * 
      * @param turn the turn to set
      */
     public void setTurn(ArrayList<Turn> turn) {
@@ -47,6 +55,8 @@ public class Trick {
     }
 
     /**
+     * Accessor for the activePlayers field.
+     * 
      * @return the activePlayers
      */
     public ArrayList<Player> getActivePlayers() {
@@ -54,6 +64,8 @@ public class Trick {
     }
 
     /**
+     * Mutator for the isActive field.
+     * 
      * @param activePlayers the activePlayers to set
      */
     public void setActivePlayers(ArrayList<Player> activePlayers) {
