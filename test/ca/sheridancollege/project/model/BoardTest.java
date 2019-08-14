@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author danie
+ * @author Daniel Minami
  */
 public class BoardTest {
     

@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class GameView {
     
-    
     public static void welcomeGame(){
         String enter = "";
         Scanner in = new Scanner(System.in);
