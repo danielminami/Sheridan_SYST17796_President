@@ -67,7 +67,7 @@ public class GamePlayers extends ArrayList<Player> {
             if (!isSameName(p.getName())) {
                 this.add(p);               
             } else {
-                throw new IllegalArgumentException("Erro: Players cannot "
+                throw new IllegalArgumentException("Error: Players cannot "
                         + "have same names.");
             }
         } else {
