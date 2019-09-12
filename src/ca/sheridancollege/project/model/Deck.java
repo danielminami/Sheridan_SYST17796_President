@@ -8,8 +8,6 @@ import java.util.Random;
  * 52 Cards defined by the constant DECK_SIZE_PRESIDENT.
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 public class Deck extends GroupOfCards {
 

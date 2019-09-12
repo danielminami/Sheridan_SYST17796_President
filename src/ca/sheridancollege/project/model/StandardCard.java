@@ -8,8 +8,6 @@ import ca.sheridancollege.project.model.Card;
  * card game.
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 public class StandardCard extends Card {
     

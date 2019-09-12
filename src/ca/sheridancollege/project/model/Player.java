@@ -6,8 +6,6 @@ package ca.sheridancollege.project.model;
  * Player contains a hand (Hand) 
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 public class Player {
     

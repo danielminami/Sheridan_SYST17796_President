@@ -8,8 +8,6 @@ import java.util.Scanner;
  * a particular game.
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 public class GamePlayers extends ArrayList<Player> {
     

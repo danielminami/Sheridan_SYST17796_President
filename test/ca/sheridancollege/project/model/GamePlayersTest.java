@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.sheridancollege.project.model;
 
 import org.junit.Test;
@@ -10,7 +5,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author stuar
+ * @author Daniel Minami
  */
 public class GamePlayersTest {
 
@@ -18,18 +13,16 @@ public class GamePlayersTest {
     }
 
     /**
-      * Alternate Path #1
-      * 1. Player registers for the game
-      * 2. Player sets an empty name
-      * 3. Shows error message
-      * 4. Asks the user to enter the name again
-      * 5. Return to step 1
-      * 
-      * This is the Boundary test, when user enters an empty name
-    */   
+     * Alternate Path #1 1. Player registers for the game 2. Player sets an
+     * empty name 3. Shows error message 4. Asks the user to enter the name
+     * again 5. Return to step 1
+     *
+     * This is the Boundary test, when user enters an empty name
+     */
     @Test
     public void testnotEmptyBoundary() {
-        System.out.println("Alternate Path1 - Checking for empty player name - Boundary Test");
+        System.out.println("Alternate Path1 - Checking for empty player name "
+                + "- Boundary Test");
         String name = " ";
         boolean expResult = false;
         boolean result = GamePlayers.notEmpty(name);
@@ -37,18 +30,16 @@ public class GamePlayersTest {
     }
 
     /**
-      * Alternate Path #1
-      * 1. Player registers for the game
-      * 2. Player sets an empty name
-      * 3. Shows error message
-      * 4. Asks the user to enter the name again
-      * 5. Return to step 1
-      * 
-      * This is the Bad test, when user enters an empty name
-    */       
+     * Alternate Path #1 1. Player registers for the game 2. Player sets an
+     * empty name 3. Shows error message 4. Asks the user to enter the name
+     * again 5. Return to step 1
+     *
+     * This is the Bad test, when user enters an empty name
+     */
     @Test
     public void testnotEmptyBad() {
-        System.out.println("Alternate Path1 - Checking for empty player name - Bad Test");
+        System.out.println("Alternate Path1 - Checking for empty player name "
+                + "- Bad Test");
         String name = "";
         boolean expResult = false;
         boolean result = GamePlayers.notEmpty(name);
@@ -56,18 +47,16 @@ public class GamePlayersTest {
     }
 
     /**
-      * Alternate Path #1
-      * 1. Player registers for the game
-      * 2. Player sets an empty name
-      * 3. Shows error message
-      * 4. Asks the user to enter the name again
-      * 5. Return to step 1
-      * 
-      * This is the Good test, when user enters an empty name
-    */       
+     * Alternate Path #1 1. Player registers for the game 2. Player sets an
+     * empty name 3. Shows error message 4. Asks the user to enter the name
+     * again 5. Return to step 1
+     *
+     * This is the Good test, when user enters an empty name
+     */
     @Test
     public void testnotEmptyGood() {
-        System.out.println("Alternate Path1 - Checking for empty player name - Good Test");
+        System.out.println("Alternate Path1 - Checking for empty player name "
+                + "- Good Test");
         String name = "anything";
         boolean expResult = true;
         boolean result = GamePlayers.notEmpty(name);
@@ -75,18 +64,16 @@ public class GamePlayersTest {
     }
 
     /**
-      * Alternate Path #2
-      * 1. Player registers for the game
-      * 2. Player sets the same name to a previous registered Player
-      * 3. Show error message
-      * 4. Asks the user to enter the name again
-      * 5. Returns to step 1
-      * 
-      * This is the Boundary test, when a user enters an existing name
-    */       
+     * Alternate Path #2 1. Player registers for the game 2. Player sets the
+     * same name to a previous registered Player 3. Show error message 4. Asks
+     * the user to enter the name again 5. Returns to step 1
+     *
+     * This is the Boundary test, when a user enters an existing name
+     */
     @Test
     public void testisSameNameBoundary() {
-        System.out.println("Alternate Path2 - Checking for duplicate player name - Boundary Test");
+        System.out.println("Alternate Path2 - Checking for duplicate player"
+                + " name - Boundary Test");
         Player p1 = new Player("one");
         Player p2 = new Player("two");
         Player p3 = new Player("three");
@@ -101,18 +88,16 @@ public class GamePlayersTest {
     }
 
     /**
-      * Alternate Path #2
-      * 1. Player registers for the game
-      * 2. Player sets the same name to a previous registered Player
-      * 3. Show error message
-      * 4. Asks the user to enter the name again
-      * 5. Returns to step 1
-      * 
-      * This is the Bad test, when a user enters an existing name
-    */           
+     * Alternate Path #2 1. Player registers for the game 2. Player sets the
+     * same name to a previous registered Player 3. Show error message 4. Asks
+     * the user to enter the name again 5. Returns to step 1
+     *
+     * This is the Bad test, when a user enters an existing name
+     */
     @Test
     public void testisSameNameBad() {
-        System.out.println("Alternate Path2 - Checking for duplicate player name - Bad Test");
+        System.out.println("Alternate Path2 - Checking for duplicate player "
+                + "name - Bad Test");
         Player p1 = new Player("one");
         Player p2 = new Player("one");
         GamePlayers sample = new GamePlayers();
@@ -123,18 +108,16 @@ public class GamePlayersTest {
     }
 
     /**
-      * Alternate Path #2
-      * 1. Player registers for the game
-      * 2. Player sets the same name to a previous registered Player
-      * 3. Show error message
-      * 4. Asks the user to enter the name again
-      * 5. Returns to step 1
-      * 
-      * This is the Good test, when a user enters an existing name
-    */           
+     * Alternate Path #2 1. Player registers for the game 2. Player sets the
+     * same name to a previous registered Player 3. Show error message 4. Asks
+     * the user to enter the name again 5. Returns to step 1
+     *
+     * This is the Good test, when a user enters an existing name
+     */
     @Test
     public void testisSameNameGood() {
-        System.out.println("Alternate Path2 - Checking for duplicate player name - Good Test");
+        System.out.println("Alternate Path2 - Checking for duplicate player "
+                + "name - Good Test");
         Player p1 = new Player("one");
         Player p2 = new Player("two");
         GamePlayers sample = new GamePlayers();

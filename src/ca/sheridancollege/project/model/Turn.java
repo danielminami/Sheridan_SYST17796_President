@@ -8,8 +8,6 @@ import java.util.ArrayList;
  * card game.
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 public class Turn {
     private Player player;

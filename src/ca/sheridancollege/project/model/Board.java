@@ -7,8 +7,6 @@ import java.util.ArrayList;
  * This class models the board, it holds the group of cards played last
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 public class Board extends GroupOfCards {
 

@@ -6,8 +6,6 @@ import java.util.ArrayList;
  * This class models a GroupOfCards. 
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 
 public abstract class GroupOfCards 

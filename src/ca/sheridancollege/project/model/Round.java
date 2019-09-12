@@ -5,8 +5,6 @@ package ca.sheridancollege.project.model;
  * the winner, finishing the game instance
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 public class Round {
     

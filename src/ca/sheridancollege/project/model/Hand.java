@@ -8,8 +8,6 @@ import java.util.ArrayList;
  * of players. 
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 public class Hand extends GroupOfCards {
     

@@ -5,8 +5,6 @@ package ca.sheridancollege.project.model;
  * with an specific comparison method, designed for this game.
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 public class PresidentCard extends StandardCard {
     

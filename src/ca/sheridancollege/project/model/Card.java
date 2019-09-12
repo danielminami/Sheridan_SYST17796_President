@@ -5,8 +5,6 @@ package ca.sheridancollege.project.model;
  * various types of Cards.
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 public abstract class Card implements Comparable<Card>{
 

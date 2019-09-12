@@ -8,8 +8,6 @@ import java.util.ArrayList;
  * the Trick.
  * 
  * @author Daniel Minami
- * @author Stuart Bollinger
- * @author Muaz Ahmed
  */
 public class Trick {
 
